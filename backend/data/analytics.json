@@ -1,0 +1,28 @@
+{
+  "demo-bot-123:undefined": [
+    {
+      "data": {
+        "botId": "demo-bot-123"
+      },
+      "timestamp": "2026-03-12T08:12:04.860Z"
+    },
+    {
+      "data": {
+        "botId": "demo-bot-123"
+      },
+      "timestamp": "2026-03-12T08:12:04.861Z"
+    },
+    {
+      "data": {
+        "botId": "demo-bot-123"
+      },
+      "timestamp": "2026-03-12T08:13:21.430Z"
+    },
+    {
+      "data": {
+        "botId": "demo-bot-123"
+      },
+      "timestamp": "2026-03-12T08:13:21.432Z"
+    }
+  ]
+}

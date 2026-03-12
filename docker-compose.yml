@@ -1,0 +1,38 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: portabot-postgres
+    environment:
+      POSTGRES_USER: portabot
+      POSTGRES_PASSWORD: portabot123
+      POSTGRES_DB: portabot
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - portabot
+
+  milvus:
+    image: milvusdb/milvus:v2.3.3
+    container_name: portabot-milvus
+    environment:
+      ETCD_USE_EMBED: "true"
+      COMMON_SECURITY_AUTHORIZATIONENABLED: "false"
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    ports:
+      - "19530:19530"
+      - "9091:9091"
+    volumes:
+      - milvus_data:/var/lib/milvus
+    networks:
+      - portabot
+
+networks:
+  portabot:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  milvus_data:

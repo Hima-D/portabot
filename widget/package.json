@@ -1,0 +1,13 @@
+{
+  "name": "@portabot/widget",
+  "version": "1.0.0",
+  "description": "PortaBot embeddable chat widget",
+  "main": "widget.js",
+  "scripts": {
+    "build": "terser widget.js -o widget.min.js --compress --mangle",
+    "dev": "npx serve ."
+  },
+  "devDependencies": {
+    "terser": "^5.27.0"
+  }
+}

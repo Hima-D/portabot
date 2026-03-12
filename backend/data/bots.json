@@ -1,0 +1,107 @@
+{
+  "demo-bot-123": {
+    "id": "demo-bot-123",
+    "name": "My Awesome Bot",
+    "companyName": "Your Company",
+    "companyUrl": "https://www.lawgical.tech/",
+    "welcomeMessage": "Hi! 👋 How can I help you today?",
+    "primaryColor": "#10b981",
+    "theme": "dark",
+    "widgetSize": "large",
+    "position": "bottom-right",
+    "humanHandoff": true,
+    "collectEmail": false,
+    "showBranding": true,
+    "language": "en",
+    "customInstructions": "",
+    "systemPrompt": "",
+    "allowedDomains": [
+      "example.com",
+      "localhost:5173"
+    ],
+    "piiRedaction": true,
+    "zeroRetention": false,
+    "dataRetentionDays": 30,
+    "emailNotifications": false,
+    "analyticsReports": true,
+    "knowledgeGapAlerts": true,
+    "slackWebhook": "",
+    "zapierWebhook": "",
+    "ragConfig": {
+      "chunking": {
+        "strategy": "recursive",
+        "chunkSize": 512,
+        "chunkOverlap": 64
+      },
+      "embedding": {
+        "model": "text-embedding-3-small",
+        "dimensions": 1536
+      },
+      "retrieval": {
+        "topK": 5,
+        "scoreThreshold": 0.7,
+        "searchType": "hybrid"
+      },
+      "generation": {
+        "model": "claude-sonnet-4-20250514",
+        "temperature": 0.3,
+        "maxTokens": 1000
+      }
+    },
+    "createdAt": "2026-03-12T07:51:41.998Z",
+    "apiKeys": [
+      "pk_987c21c37535411397554c0ad3adb790",
+      "pk_fecd8408b5ff442ba25abad893038e4e"
+    ],
+    "updatedAt": "2026-03-12T09:22:47.614Z"
+  },
+  "bot_8098df30df03": {
+    "id": "bot_8098df30df03",
+    "name": "Second Company Bot",
+    "companyName": "Second Company",
+    "companyUrl": "https://mycompany.com",
+    "welcomeMessage": "Hi! 👋 How can I help you today?",
+    "primaryColor": "#6366f1",
+    "theme": "light",
+    "widgetSize": "medium",
+    "position": "bottom-right",
+    "humanHandoff": true,
+    "collectEmail": false,
+    "showBranding": true,
+    "language": "en",
+    "customInstructions": "",
+    "systemPrompt": "",
+    "allowedDomains": [],
+    "piiRedaction": false,
+    "zeroRetention": false,
+    "dataRetentionDays": 30,
+    "emailNotifications": true,
+    "analyticsReports": true,
+    "knowledgeGapAlerts": true,
+    "slackWebhook": "",
+    "zapierWebhook": "",
+    "ragConfig": {
+      "chunking": {
+        "strategy": "recursive",
+        "chunkSize": 512,
+        "chunkOverlap": 64
+      },
+      "embedding": {
+        "model": "text-embedding-3-small",
+        "dimensions": 1536
+      },
+      "retrieval": {
+        "topK": 5,
+        "scoreThreshold": 0.7,
+        "searchType": "hybrid"
+      },
+      "generation": {
+        "model": "claude-sonnet-4-20250514",
+        "temperature": 0.3,
+        "maxTokens": 1000
+      }
+    },
+    "createdAt": "2026-03-12T09:27:34.074Z",
+    "apiKeys": []
+  }
+}

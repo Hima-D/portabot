@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PortaBot Widget Test</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 40px; background: #f5f5f5; }
+    h1 { color: #333; }
+    .info { background: #e0f2fe; padding: 16px; border-radius: 8px; margin-bottom: 20px; }
+    .success { background: #dcfce7; padding: 12px; border-radius: 8px; color: #166534; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>PortaBot Widget Test</h1>
+  <div class="info">
+    <strong>Bot ID:</strong> demo-bot-123<br>
+    <strong>API:</strong> http://localhost:3000
+  </div>
+  
+  <div class="success">
+    Widget should appear in the bottom-right corner. Try asking about shipping!
+  </div>
+  
+  <script>
+    window.PortaBotConfig = { 
+      botId: "demo-bot-123",
+      apiBase: "http://localhost:3000",
+      primaryColor: "#10b981",
+      theme: "light",
+      welcomeMessage: "Hi! Ask me about our shipping policy!"
+    };
+  </script>
+  <script src="http://localhost:3000/widget.js"></script>
+</body>
+</html>

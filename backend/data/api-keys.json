@@ -1,0 +1,16 @@
+{
+  "pk_987c21c37535411397554c0ad3adb790": {
+    "key": "pk_987c21c37535411397554c0ad3adb790",
+    "botId": "demo-bot-123",
+    "name": "Production Key",
+    "createdAt": "2026-03-12T07:52:02.820Z",
+    "lastUsed": null
+  },
+  "pk_fecd8408b5ff442ba25abad893038e4e": {
+    "key": "pk_fecd8408b5ff442ba25abad893038e4e",
+    "botId": "demo-bot-123",
+    "name": "New Key",
+    "createdAt": "2026-03-12T08:13:29.486Z",
+    "lastUsed": null
+  }
+}
