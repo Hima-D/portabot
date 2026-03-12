@@ -11,7 +11,8 @@ import {
   Bot,
   ChevronDown,
   MessageCircle,
-  Plus
+  Plus,
+  Sparkles
 } from 'lucide-react';
 import './Layout.css';
 
@@ -84,6 +85,10 @@ function Layout() {
         </div>
 
         <nav className="sidebar-nav">
+          <Link to="/create" className="nav-item create-btn">
+            <Sparkles size={20} />
+            <span>Create AI Bot</span>
+          </Link>
           {navItems.map(item => (
             <Link
               key={item.path}

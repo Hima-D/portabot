@@ -525,3 +525,16 @@
 .bot-option-create:hover {
   background: #475569;
 }
+
+.create-btn {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white !important;
+  justify-content: center;
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  border-radius: 10px;
+}
+
+.create-btn:hover {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+}

@@ -74,6 +74,7 @@ export function BotProvider({ children }) {
       const newBot = await response.json();
       setBots([...bots, newBot]);
       setBot(newBot);
+      return newBot;
     } catch (error) {
       console.error('Failed to create bot:', error);
     }

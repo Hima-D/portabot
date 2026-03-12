@@ -9,6 +9,7 @@ import Conversations from './pages/Conversations';
 import Customize from './pages/Customize';
 import Analytics from './pages/Analytics';
 import Settings from './pages/Settings';
+import AIBuilder from './pages/AIBuilder';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="customize" element={<Customize />} />
             <Route path="analytics" element={<Analytics />} />
             <Route path="settings" element={<Settings />} />
+            <Route path="create" element={<AIBuilder />} />
           </Route>
         </Routes>
       </BrowserRouter>
