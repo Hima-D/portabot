@@ -1,3 +1,6 @@
+import { generateEmbedding } from './embedder.js';
+import { hybridSearch, rerankDocuments } from './reranker.js';
+
 const vectorStore = new Map();
 
 export async function retrieveContext({ botId, embedding, topK = 5, scoreThreshold = 0.1, query = '' }) {
@@ -8,49 +11,48 @@ export async function retrieveContext({ botId, embedding, topK = 5, scoreThresho
     return [];
   }
 
-  // First try vector similarity
+  try {
+    // Use hybrid search for better results
+    const hybridResults = await hybridSearch(query, botId, vectorStore, {
+      topK: topK * 2,
+      denseWeight: 0.6,
+      sparseWeight: 0.4
+    });
+
+    // Apply reranking to the combined results
+    const reranked = await rerankDocuments(query, hybridResults.combined, topK);
+
+    // Filter by threshold
+    const filtered = reranked.filter(r => r.score >= scoreThreshold * 0.5);
+
+    return filtered.map(r => ({
+      content: r.content,
+      metadata: r.metadata,
+      score: r.relevanceScore || r.score,
+      method: r.methods?.join(', ') || 'hybrid'
+    }));
+  } catch (error) {
+    console.error('Retrieval error:', error);
+    return simpleVectorSearch(vectors, embedding, topK, scoreThreshold);
+  }
+}
+
+function simpleVectorSearch(vectors, embedding, topK, scoreThreshold) {
   const results = vectors.map(item => ({
     ...item,
     score: cosineSimilarity(embedding, item.embedding)
   }));
 
-  let filtered = results
+  return results
     .filter(r => r.score >= scoreThreshold)
     .sort((a, b) => b.score - a.score)
-    .slice(0, topK);
-
-  // If no vector matches, try keyword matching
-  if (filtered.length === 0 && query) {
-    const queryLower = query.toLowerCase();
-    const keywords = queryLower.split(/\s+/).filter(k => k.length > 2);
-    
-    if (keywords.length > 0) {
-      const keywordResults = vectors.map(item => {
-        const contentLower = item.content.toLowerCase();
-        let keywordScore = 0;
-        for (const keyword of keywords) {
-          if (contentLower.includes(keyword)) {
-            keywordScore += 1;
-          }
-        }
-        return {
-          ...item,
-          score: keywordScore / keywords.length
-        };
-      });
-
-      filtered = keywordResults
-        .filter(r => r.score > 0)
-        .sort((a, b) => b.score - a.score)
-        .slice(0, topK);
-    }
-  }
-
-  return filtered.map(r => ({
-    content: r.content,
-    metadata: r.metadata,
-    score: r.score
-  }));
+    .slice(0, topK)
+    .map(r => ({
+      content: r.content,
+      metadata: r.metadata,
+      score: r.score,
+      method: 'vector'
+    }));
 }
 
 function cosineSimilarity(a, b) {

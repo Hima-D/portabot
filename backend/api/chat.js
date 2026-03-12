@@ -55,10 +55,12 @@ export default async function chatRoutes(req, res) {
       sessionId: finalSessionId,
       message: answer,
       sources: sources || [],
+      retrievalMethod: sources?.length > 0 ? sources[0]?.method || 'hybrid' : 'fallback',
       citations: sources?.map(s => ({
         text: s.content?.substring(0, 100),
         source: s.metadata?.source,
-        score: s.score
+        score: Math.round((s.score || 0) * 100) / 100,
+        method: s.method
       }))
     });
   } catch (error) {
